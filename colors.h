@@ -80,27 +80,3 @@ void color(char color[8]) {
 void limpar() {
   system("cls||clear");
 }
-
-// Tema Escuro/Claro 
-void temas(int op) {
-  if (op == 1) {
-    (tema == 1) ? color(WHTB): color(BLKB);
-    limpar();
-    (tema == 1) ? color(BLU): color(YEL); // texto
-    (tema == 1) ? color(WHTB): color(BLKB); // fundo
-  } else if (2) {
-    (tema == 1) ? color(YEL): color(GRN);
-    (tema == 1) ? color(WHTB): color(BLKB);
-  } else {
-    (tema == 1) ? color(BLU): color(YEL);
-    (tema == 1) ? color(WHTB): color(BLKB);
-  }
-}
-
-// Espera  a pessoa precionar teclar para continuar
-void espera() {
-  color(RED);
-  (tema == 1) ? color(WHTB): color(BLKB);
-  printf("\nPrecione ENTER para continuar...", fflush(stdin));
-  getchar();
-}
