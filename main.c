@@ -27,6 +27,8 @@ void deletaContaMenorSaldo();
 int verificarPos(); // verificar se tem alguma conta deletada 
 void amzContaDelZero(); // inicializar o vetor amzContaDelete com 0 para evitar erros
 int compararStrings(char str1[], char str2[]); // função usada para fazer buscar pelo CPF 
+void espera(); // Espera  a pessoa precionar teclar para continuar
+void temas(int op); // Tema Escuro/Claro 
 
 int main() {
   srand(time(NULL)); // Define o ponto de partida para gerar numero aletorio
@@ -270,4 +272,26 @@ int compararStrings(char s1[], char s2[]) {
   }
   //strings iguais
   return 0;
+}
+
+void temas(int op) {
+  if (op == 1) {
+    (tema == 1) ? color(WHTB): color(BLKB);
+    limpar();
+    (tema == 1) ? color(BLU): color(YEL); // texto
+    (tema == 1) ? color(WHTB): color(BLKB); // fundo
+  } else if (2) {
+    (tema == 1) ? color(YEL): color(GRN);
+    (tema == 1) ? color(WHTB): color(BLKB);
+  } else {
+    (tema == 1) ? color(BLU): color(YEL);
+    (tema == 1) ? color(WHTB): color(BLKB);
+  }
+}
+
+void espera() {
+  color(RED);
+  (tema == 1) ? color(WHTB): color(BLKB);
+  printf("\nPrecione ENTER para continuar...", fflush(stdin));
+  getchar();
 }
