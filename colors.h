@@ -1,14 +1,14 @@
-//Regular text
-#define BLK "\e[0;30m"
-#define RED "\e[0;31m"
-#define GRN "\e[0;32m"
-#define YEL "\e[0;33m"
-#define BLU "\e[0;34m"
-#define MAG "\e[0;35m"
-#define CYN "\e[0;36m"
-#define WHT "\e[0;37m"
+//Texto normal
+#define BLK "\e[0;30m" // Preto
+#define RED "\e[0;31m" // Vermelho
+#define GRN "\e[0;32m" // Verde
+#define YEL "\e[0;33m" // Amarelo
+#define BLU "\e[0;34m" // Azul
+#define MAG "\e[0;35m" // Magenta
+#define CYN "\e[0;36m" // Ciano
+#define WHT "\e[0;37m" // Branco
 
-//Regular bold text
+//Texto em negrito normal
 #define BBLK "\e[1;30m"
 #define BRED "\e[1;31m"
 #define BGRN "\e[1;32m"
@@ -18,7 +18,7 @@
 #define BCYN "\e[1;36m"
 #define BWHT "\e[1;37m"
 
-//Regular underline text
+//Texto sublinhado normal
 #define UBLK "\e[4;30m"
 #define URED "\e[4;31m"
 #define UGRN "\e[4;32m"
@@ -28,17 +28,17 @@
 #define UCYN "\e[4;36m"
 #define UWHT "\e[4;37m"
 
-//Regular background
-#define BLKB "\e[40m"
-#define REDB "\e[41m"
-#define GRNB "\e[42m"
-#define YELB "\e[43m"
-#define BLUB "\e[44m"
-#define MAGB "\e[45m"
-#define CYNB "\e[46m"
-#define WHTB "\e[47m"
+//Plano de fundo normal
+#define BLKB "\e[40m" // Preto
+#define REDB "\e[41m" // Vermelho
+#define GRNB "\e[42m" // Verde
+#define YELB "\e[43m" // Amarelo
+#define BLUB "\e[44m" // Azul
+#define MAGB "\e[45m" // Magenta
+#define CYNB "\e[46m" // Ciano
+#define WHTB "\e[47m" // Branco
 
-//High intensty background
+//Fundo de alta intensidade
 #define BLKHB "\e[0;100m"
 #define REDHB "\e[0;101m"
 #define GRNHB "\e[0;102m"
@@ -48,7 +48,7 @@
 #define CYNHB "\e[0;106m"
 #define WHTHB "\e[0;107m"
 
-//High intensty text
+//Texto de alta intensidade
 #define HBLK "\e[0;90m"
 #define HRED "\e[0;91m"
 #define HGRN "\e[0;92m"
@@ -58,7 +58,7 @@
 #define HCYN "\e[0;96m"
 #define HWHT "\e[0;97m"
 
-//Bold high intensity text
+//Texto em negrito de alta intensidade
 #define BHBLK "\e[1;90m"
 #define BHRED "\e[1;91m"
 #define BHGRN "\e[1;92m"
@@ -68,13 +68,39 @@
 #define BHCYN "\e[1;96m"
 #define BHWHT "\e[1;97m"
 
-//Reset
+// Resetar as cores para padrão do teminal
 #define reset "\e[0m"
 
 //Trocar cor
-void color(char color[8])
-{	printf(color); }
+void color(char color[8]) {
+  printf(color);
+}
 
-// limpar
-void limpar()
-{	system("cls||clear"); }
+// Limpar Tela Windows/Linux
+void limpar() {
+  system("cls||clear");
+}
+
+// Tema Escuro/Claro 
+void temas(int op) {
+  if (op == 1) {
+    (tema == 1) ? color(WHTB): color(BLKB);
+    limpar();
+    (tema == 1) ? color(BLU): color(YEL);
+    (tema == 1) ? color(WHTB): color(BLKB);
+  } else if (2) {
+    (tema == 1) ? color(YEL): color(GRN);
+    (tema == 1) ? color(WHTB): color(BLKB);
+  } else {
+    (tema == 1) ? color(BLU): color(YEL);
+    (tema == 1) ? color(WHTB): color(BLKB);
+  }
+}
+
+// Espera  a pessoa precionar teclar para continuar
+void espera() {
+  color(RED);
+  (tema == 1) ? color(WHTB): color(BLKB);
+  printf("\nPrecione ENTER para continuar...", fflush(stdin));
+  getchar();
+}
