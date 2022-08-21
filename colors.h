@@ -86,8 +86,8 @@ void temas(int op) {
   if (op == 1) {
     (tema == 1) ? color(WHTB): color(BLKB);
     limpar();
-    (tema == 1) ? color(BLU): color(YEL);
-    (tema == 1) ? color(WHTB): color(BLKB);
+    (tema == 1) ? color(BLU): color(YEL); // texto
+    (tema == 1) ? color(WHTB): color(BLKB); // fundo
   } else if (2) {
     (tema == 1) ? color(YEL): color(GRN);
     (tema == 1) ? color(WHTB): color(BLKB);
