@@ -74,7 +74,7 @@ void criarConta()
 	c[posC].limite = rand () % (int)(c[posC].saldo);
 	printf("Limite: %.2f",c[posC].limite);
 	printf("\n=======================================\n");
-	printf("%s",c[posC].titular);
+
 	if(posC == contNumberC)
 	{	int pos=0, resultadoV = 0;
 		for(pos; pos <  sizeof(amzContaDelete)/sizeof(amzContaDelete[0]); pos++)
@@ -115,7 +115,7 @@ void consultaSaldo()
 				scanf("%d",&tempID);
 				for(j; j <= contNumberC; j++)
 				{	if(c[j].id == tempID)
-					{	printf("Saldo da conta e %.2f",c[j].saldo);
+					{	printf("Titular: %s\n CPF: %s\n Saldo : %.2f\n Limite: %.2f\n",c[j].titular,c[j].cpf,c[j].saldo,c[j].limite);
 						espera();
 						return; } }
 				color(RED);
@@ -133,7 +133,7 @@ void consultaSaldo()
 				tempCPF = gets(malloc(16));
 				for(j; j < contNumberC; j++)
 				{	if(compararStrings(tempCPF,c[j].cpf) == 0)
-					{	printf("Saldo da conta e %.2f",c[j].saldo);
+					{	printf(" ID: %d\n Titular: %s\n Saldo : %.2f\n Limite: %.2f\n",c[j].id,c[j].titular,c[j].saldo,c[j].limite);
 						espera();
 						return; } }
 				color(RED);
@@ -159,7 +159,7 @@ void deletaContaMenorSaldo()
 	printf("=======================================\n");
 	if (contNumberC == 2)
 	{	int pos=0;
-		printf("ID: %d\nSaldo : %.2f\n",c[1].id,c[1].saldo);
+		printf("ID: %d\nTitular: %s\nSaldo : %.2f\n",c[1].id,c[1].titular,c[1].saldo);
 		for(pos; pos < sizeof(c[1].cpf)/sizeof(c[1].cpf[0]); pos++ )
 		{	c[1].cpf[pos] = '\0'; }
 		pos=0;
@@ -181,7 +181,7 @@ void deletaContaMenorSaldo()
 		{	if(c[pos].saldo < c[contaMenorSaldo].saldo )
 			{	contaMenorSaldo = pos; } }
 		pos=0;
-		printf("ID: %d\nSaldo : %.2f\n",c[contaMenorSaldo].id,c[contaMenorSaldo].saldo);
+		printf("ID: %d\nTitular: %s\nSaldo : %.2f\n",c[contaMenorSaldo].id,c[contaMenorSaldo].titular,c[contaMenorSaldo].saldo);
 		for(pos; pos < sizeof(c[contaMenorSaldo].cpf)/sizeof(c[contaMenorSaldo].cpf[0]); pos++ )
 		{	c[contaMenorSaldo].cpf[pos] = '\0'; }
 		pos=0;
@@ -219,7 +219,7 @@ int verificarPos()
 void espera()
 {	color(RED);
 	(tema == 1) ? color(WHTB) :  color(BLKB);
-	printf("\nPrecione ENTER para continuar...", getchar());
+	printf("\nPrecione ENTER para continuar...",  fflush(stdin));
 	getchar(); }
 
 int compararStrings(char s1[], char s2[])
