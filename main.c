@@ -84,6 +84,9 @@ void criarConta() {
   printf("Digite o saldo da conta: ");
   scanf("%f", & c[posC].saldo);
   c[posC].limite = rand() % (int)(c[posC].saldo);
+  while(c[posC].limite <= 0){
+    c[posC].limite = rand() % (int)(c[posC].saldo);
+  } // Fix limite 0
   printf("Limite: %.2f", c[posC].limite);
   printf("\n=======================================\n");
   if (posC == contNumberC) {
@@ -187,26 +190,7 @@ void deletaContaMenorSaldo() {
   printf("|              CONTA DELETADA           |\n");
   printf("=======================================\n");
   if (contNumberC == 2) { // verificar se uma já foi criada e se tem mais de uma para deleta conta com menor saldo
-    int pos = 0;
-    printf("ID: %d\nTitular: %s\nSaldo : %.2f\n", c[1].id, c[1].titular, c[1].saldo);
-    for (pos; pos < sizeof(c[1].cpf) / sizeof(c[1].cpf[0]); pos++) { // limpar o CPF
-      c[1].cpf[pos] = '\0';
-    }
-    pos = 0;
-    for (pos; pos < sizeof(c[1].titular) / sizeof(c[1].titular[0]); pos++) { // limpar o nome do titular
-      c[1].titular[pos] = '\0';
-    }
-    c[1].id = 0;
-    c[1].limite = 0;
-    c[1].saldo = 0;
-    pos = 0;
-    for (pos; pos < sizeof(amzContaDelete) / sizeof(amzContaDelete[0]); pos++) { // armazenar a posição da conta deletada
-      if (amzContaDelete[pos] == 0) {
-        amzContaDelete[pos] = 1;
-        break;
-      }
-    }
-
+	printf("Cadastre no minimo 2 contas !");
   } else if (contNumberC > 2) {
     int contaMenorSaldo = 1, pos = 2;
     for (pos; pos < contNumberC; pos++) {
@@ -219,11 +203,11 @@ void deletaContaMenorSaldo() {
     printf("ID: %d\nTitular: %s\nSaldo : %.2f\n", c[contaMenorSaldo].id, c[contaMenorSaldo].titular, c[contaMenorSaldo].saldo);
     for (pos; pos < sizeof(c[contaMenorSaldo].cpf) / sizeof(c[contaMenorSaldo].cpf[0]); pos++) {
       c[contaMenorSaldo].cpf[pos] = '\0';
-    }
+    }  // limpar o CPF
     pos = 0;
     for (pos; pos < sizeof(c[contaMenorSaldo].titular) / sizeof(c[contaMenorSaldo].titular[0]); pos++) {
       c[contaMenorSaldo].titular[pos] = '\0';
-    }
+    }  // limpar o nome do titular
     c[contaMenorSaldo].id = 0;
     c[contaMenorSaldo].limite = 0;
     c[contaMenorSaldo].saldo = 0;
@@ -232,7 +216,7 @@ void deletaContaMenorSaldo() {
       if (amzContaDelete[pos] == 0) {
         amzContaDelete[pos] = contaMenorSaldo;
         break;
-      }
+      } // armazenar a posição da conta deletada
     }
 
   } else {
